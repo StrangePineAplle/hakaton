@@ -23,7 +23,7 @@ const callback = () =>
                 data =
                 {
                     "username": document.getElementById("username").value,
-                    "password": document.getElementById("password").value
+                    "password": document.getElementById("Obema").value
                 }
 
             const options = 
@@ -55,7 +55,7 @@ const callback = () =>
             email = document.getElementById("username").value
             data ={
             "email": email,
-            "password": document.getElementById("password").value,
+            "password": document.getElementById("Obema").value,
             "first_name": document.getElementById("namef").value,
             "tag": "string"
             }
