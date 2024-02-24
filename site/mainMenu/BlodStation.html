@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlodStation</title>
+  <style>
+    #top {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background-color: #ffffff;
+      border: 1px solid #000000;
+      padding: 20px;
+      font-size: 20px;
+      line-height: 1.5em;
+      osition: absolute;
+      padding: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(114, 114, 114, 0.6);
+      border-radius: 10px;
+    }
+    
+    #text {
+      text-align: left;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #location{
+      
+      font-size: 20px;
+      flex-basis: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
+    }
+    #part2 {
+      flex-basis: 5%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    #part2 div {
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+      text-align: center;
+      line-height: 50px;
+    }
+    #part3 {
+      flex-basis: 5%;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    #prev {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+    
+    #next {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+
+    .red
+    {
+      background-color: rgba(246,62,62,.1);
+      border: 2px solid rgba(247,62,62,.4);
+      color: rgba(219, 75, 75, 0.4);
+    }
+    .grenn
+    {
+      border: 5px #8d1818;
+      background-color: rgba(39,193,117,.1);
+      color: #13e07a;
+    }
+      </style>
+</head>
+<body>
+<div id = "top" >
+    <div id = "text"></div>
+    
+
+  
+    <div id = "location"></div>
+
+  
+
+  <button id="prev"> ←</button>
+  <button id="next"> →</button>
+  <div id="part2">
+    <div id="o_p">O+</div>
+    <div id="a_p">A+</div>
+    <div id="b_p">B+</div>
+    <div id="ab_p">AB+</div>
+  </div>
+  <div id="part2">
+    <div id="o_m">O-</div>
+    <div id="a_m">A-</div>
+    <div id="b_m">B-</div>
+    <div id="ab_m">AB-</div>
+  </div>
+  <div id = "part3" >
+    <button>Посмотреть </button>
+
+  </div>
+</div>
+<script>
+const url = "https://hackaton.donorsearch.org/api/blood_stations/";
+var data ;
+var currentIndex = 0;
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        this.data = data;
+        showData();
+    })
+    .catch(error => console.error('Error:', error));
+
+function showData() {
+    const result = data.results[currentIndex];
+    if (!result.closed) {
+        document.getElementById("text").innerHTML = result.title ;//+ '\n' + result.city.title + ',' + result.address + '\n' ;
+        document.getElementById("location").innerHTML = result.city.title + ',' + result.address;
+        setBloodStatus("o_p", result.o_plus);
+        setBloodStatus("o_m", result.o_minus);
+        setBloodStatus("a_p", result.a_plus);
+        setBloodStatus("a_m", result.a_minus);
+        setBloodStatus("b_p", result.b_plus);
+        setBloodStatus("b_m", result.b_minus);
+        setBloodStatus("ab_p", result.ab_plus);
+        setBloodStatus("ab_m", result.ab_minus);
+
+    }
+}
+
+function setBloodStatus(bloodType, status) {
+  const element = document.getElementById(bloodType);
+  if (status === "unknown") {
+    element.className = "red";
+  } else {
+    element.className = "grenn";
+  }
+}
+
+document.getElementById("prev").addEventListener("click", function() {
+    currentIndex--;
+    if (currentIndex < 0) {
+        currentIndex = data.results.length - 1;
+    }
+    showData();
+});
+
+document.getElementById("next").addEventListener("click", function() {
+    currentIndex++;
+    if (currentIndex >= data.results.length) {
+        currentIndex = 0;
+    }
+    showData();
+});
+</script>
+</body>
+</html>

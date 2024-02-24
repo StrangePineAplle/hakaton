@@ -1,0 +1,106 @@
+.container {
+	max-width: 400px;
+	min-height: 100%;
+	overflow: hidden;
+    background: linear-gradient( #FF4040,#ffeaea);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #ffffff;
+}
+.login-box{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    
+    width: 400px;
+    transform: translate(-50%,0);
+    background: linear-gradient( #FF4040,#ffeaea);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(114, 114, 114, 0.6);
+    border-radius: 10px;
+}
+
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
+    height: 30px;
+    width: 0px;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+}
+
+a{
+    position: relative;
+    text-decoration: none;
+    font-family: 'Poppins',sans-serif;
+    color: #000000;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    padding: 0 10px;
+}
+a:after{
+    content: "";
+    position: absolute;
+    background-color: #FF4040;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+a:hover{
+    color: #FF4040;
+}
+a:hover:after{
+    width: 100%;
+}
+
+.menu {
+    background: #f6f7f8;
+    position: fixed;
+    bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    min-width: 100%;
+    display: flex;
+    
+}
+
+.header {
+    text-align: center;
+}
+
+.selected {
+    color: #FF4040;
+}
+
+#top div{
+    text-align: center;
+    letter-spacing: 2px;
+    padding: 10px 60px;
+}
+
+#header{
+    text-align: center;
+    letter-spacing: 2px;
+    padding: 10px 60px;
+    margin-top: 20px;
+
+}

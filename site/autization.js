@@ -38,11 +38,11 @@ const callback = () =>
 
 
 
-                fetch(url, opt404ions)
+                fetch(url, options)
             .then(response => response.json())
             .then(data => {
                 console.log('Данные пользователя успешно отправлены:');
-                if('id' in data) console.log('+');
+                if('id' in data)  {window.location.href = 'mainMenu/index.html';}
             })
             .catch(error => {
                 console.error('Произошла ошибка при отправке данных:', error);
@@ -55,8 +55,8 @@ const callback = () =>
             email = document.getElementById("username").value
             data ={
             "email": email,
-            "password": "aplle777",
-            "first_name": "Victor",
+            "password": document.getElementById("password").value,
+            "first_name": document.getElementById("namef").value,
             "tag": "string"
             }
             // Зачем нужен tag ?
@@ -74,10 +74,7 @@ const callback = () =>
                 .then(response => response.json())
                 .then(data => {
                     console.log('Данные пользователя успешно отправлены:');
-                    if('user_id' in data) {
-                        console.log('+');
-                    }
-
+                    if('user_id' in data) {window.location.href = 'podwerjdenia.html?id=' + data['user_id'] +"&email="+email;}
                 })
                 .catch(error => {
                     console.error('Произошла ошибка при отправке данных:', error);

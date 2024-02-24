@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>SupportUs</title>
+</head>
+<body>
+<div class="container">
+    <div class="login-box">
+        <h3 id="header">Напоминание о донации:</h3>
+        <div class="tableElement">
+        Тип донации:
+        <select id="donation-type"> 
+          <option value="цельная кровь">Цельная кровь</option>
+          <option value="плазма">Плазма</option>
+          <option value="тромбоциты">Тромбоциты</option>
+          <option value="эритроциты">Эритроциты</option>
+          <option value="гранулоциты">Гранулоциты</option>
+        </select>
+        </div>
+
+        <div class="tableElement">
+        <label for="donation-date">Планируемая дата:</label>
+        <input type="date" id="donation-date">
+        </div>
+
+        <div class="tableElement">
+        Тип донации:
+        <select id="donation-type">
+          <option value="цельная кровь">Цельная кровь</option>
+          <option value="плазма">Плазма</option>
+        </select>
+        </div>
+
+        <div class="tableElement">
+        Место сдачи:
+        <select id="donation-place">
+          <option value="стационарный пункт">Стационарный пункт</option>
+          <option value="выездная акция">Выездная акция</option>
+        </select>
+        </div>
+
+    <div id="city-select" class="tableElement">
+        Город
+        <select id ="cit" ></select>
+    </div>
+
+    <div class="tableElement">
+    <button>Напомнить о донации</button>
+    </div>
+
+      </div>
+
+    <div class="menu">
+    <nav >
+      <a href="#Home" id="donation" class="selected">Донация</a>
+      <a href="#Services" id="top" onclick="window.location.href = '../top100/index.html'">Топ</a>
+      <a href="#Contact" id="blood" onclick="window.location.href = '../mainMenu/index.html'">Сдать</a>
+      <a href="#About" id="money" onclick="window.location.href = '../giveMoney/index.html'">Поддержать</a>
+        </nav>
+    </div>
+   
+   
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

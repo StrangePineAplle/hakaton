@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styleP.css">
+	<title>enterForm</title>
+</head>
+<body>
+<div class="container">
+    <div class="login-box">
+		<h3>ВВедите код подтверждения</h3>
+		<p>Мы заботливо отправили его вам на почту</p>
+        <form>
+			<div class="user-box" id="nameField">
+				<input type="text" id = "cod" name="" required="">
+                <label>Код</label>
+            </div>
+            <button id = "aut" >
+                Подтвердить
+            </button>
+        </form>
+    </div>
+</div>
+<script>
+    var params = (new URL(document.location)).searchParams;
+
+
+    const callback = () => 
+    {
+        event.preventDefault();
+
+        url = "https://hackaton.donorsearch.org/api/auth/confirm_email_reg/"
+        
+        data ={
+        "code": document.getElementById("cod").value,
+        "user_id": params.get("id"),
+        "email": params.get("email")
+        }
+        const options = 
+        {
+            method: 'POST',
+            headers: 
+            {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        fetch(url, options)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Данные пользователя успешно отправлены:');
+                if('id' in data) window.location.href ="index.html" ;
+                else alert("Код не верный ");
+            })
+            .catch(error => {
+                console.error('Произошла ошибка при отправке данных:', error);
+            });
+    }
+
+    const button = document.querySelector('#aut');
+    button.addEventListener('click', callback);
+</script>
+
+</body>
+</html>
